@@ -19,7 +19,7 @@ namespace CefsharpDummy
 
 
             string path = Assembly.GetExecutingAssembly().Location;
-            string strDllPath = Path.Combine(new FileInfo(path).Directory.FullName, "CefsharpRunner.dll");
+            string strDllPath = Path.Combine(Path.GetDirectoryName(path), "library\\CefsharpRunner\\CefsharpRunner.dll");
 
             if (File.Exists(strDllPath))
             {

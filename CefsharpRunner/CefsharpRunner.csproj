@@ -6,11 +6,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RuntimeIdentifiers>win10-x86;win10-x64</RuntimeIdentifiers>
     <ImplicitUsings>enable</ImplicitUsings>
-	<Configurations>Debug</Configurations>
-	<SolutionDir>$([System.IO.Path]::GetDirectoryName($(MSBuildProjectDirectory)))\</SolutionDir>
-	<BaseOutputPath></BaseOutputPath>
+    <OutputPath>..\bin\library\$(MSBuildProjectName)</OutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-x86</RuntimeIdentifier>
+    <SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,8 +28,5 @@
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy /Y  $(SolutionDir)\CefsharpRunner\bin\Debug\net6.0-windows\CefsharpRunner.dll $(SolutionDir)\CefsharpDummy\bin\x86\Debug\net6.0-windows\ " />
-  </Target>
 
 </Project>
